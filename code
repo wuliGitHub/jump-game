@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int data[1000];
+	int i = 0;
+	while (cin>>data[i])
+	{
+		i++;
+		if (getchar() == '\n')
+			break;
+	}
+	int count = 0;
+	if (data[0] == 0)
+		cout << "FALSE" << endl;
+	else
+	{
+		int sum = data[0];
+		for (int j = 1; j < i - 1; j++)
+		{
+			sum += data[j];
+			if (0 == data[j])
+			{
+				int k = j+1;
+				for (k ; k < i - 2; k++)
+					if (data[k] != 0)
+						break;
+				if (data[j-1] <=k - j )
+					count++;
+			}
+		}
+		if (0 == count)
+			cout << "TRUE" << endl;
+		else
+			cout << "FALSE" << endl;
+	}
+	return 0;
+}
